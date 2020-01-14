@@ -2,15 +2,15 @@ import React from 'react';
 
 export class Form extends React.Component {
 	state = {
-    name: "",
-    phone: ""
+		name: '',
+		phone: ''
 	};
 
 	render() {
 		return (
 			<form onSubmit={(e) => e.preventDefault()}>
 				<input
-        placeholder="Name"
+					placeholder="Name"
 					type="text"
 					value={this.state.name}
 					onChange={(e) =>
@@ -18,8 +18,8 @@ export class Form extends React.Component {
 							name: e.target.value
 						})}
 				/>
-<input
-        placeholder="Phone"
+				<input
+					placeholder="Phone"
 					type="text"
 					value={this.state.phone}
 					onChange={(e) =>
@@ -30,9 +30,10 @@ export class Form extends React.Component {
 
 				<button
 					onClick={() => {
-						if (this.state.text && this.state.text.trim()) {
-							this.setState({ text: '' });
-							this.props.onSave(this.state.text);
+						if ((this.state.name && this.state.name.trim(), this.state.phone && this.state.phone.trim())) {
+							this.setState({ name: '' });
+							this.setState({ phone: '' });
+							this.props.onSave(this.state.name, this.state.phone);
 						}
 					}}
 				>
