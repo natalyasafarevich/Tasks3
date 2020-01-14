@@ -1,4 +1,6 @@
 import React from 'react';
+import { Form } from './Form';
+// import { Input } from 'react-native-elements';
 // import { AddForm } from './AddForm';
 
 export class CustomerList extends React.Component {
@@ -22,33 +24,51 @@ export class CustomerList extends React.Component {
 
 	render() {
 		return (
-			<table>
-				<thead>
-					<div>
-						<tr>
-							<th>ID</th>
-							<th>NAME</th>
-							<th>PHONE</th>
-						</tr>
-					</div>
-				</thead>
+			<div>
+				<Form
+					onSave={(text) => {
+						// Создаем новую задачу с текстом с формы
+						const task = {
+							id: this.nextId,
+							isDone: false,
+							text
+						};
 
-				<tbody>
-					{this.state.tasks.map((i, index) => {
-						return (
-							<div>
-								{' '}
-								<tr>
-									<td>{i.id}</td>
-									<td>{i.name}</td>
-									<td>{i.phone}</td>
-								</tr>
-							</div>
-						);
-					})}
-				</tbody>
-			</table>
-			// </div>
+						// // Добавляем новую задачу в массив задач
+						// this.setState({
+						// 	tasks: addTask(this.state.tasks, task)
+						// });
+
+						this.nextId++;
+					}}
+				/>
+
+				<table>
+					<thead>
+						<div>
+							<tr>
+								<th>ID</th>
+								<th>NAME</th>
+								<th>PHONE</th>
+							</tr>
+						</div>
+					</thead>
+
+					<tbody>
+						{this.state.tasks.map((i, index) => {
+							return (
+								<div>
+									<tr>
+										<td>{i.id}</td>
+										<td>{i.name}</td>
+										<td>{i.phone}</td>
+									</tr>
+								</div>
+							);
+						})}
+					</tbody>
+				</table>
+			</div>
 		);
 	}
 }
